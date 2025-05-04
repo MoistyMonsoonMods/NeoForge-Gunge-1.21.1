@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "gunge:block/mossy_lentarite_side",
+    "down": "gunge:block/lentarite",
+    "up": "minecraft:block/moss_block",
+    "north": "gunge:block/mossy_lentarite_side",
+    "east": "gunge:block/mossy_lentarite_side",
+    "south": "gunge:block/mossy_lentarite_side",
+    "west": "gunge:block/mossy_lentarite_side"
+  }
+}

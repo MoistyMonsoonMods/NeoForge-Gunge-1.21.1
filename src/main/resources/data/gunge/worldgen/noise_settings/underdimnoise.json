@@ -1,0 +1,212 @@
+{
+  "sea_level": -256,
+  "disable_mob_generation": true,
+  "aquifers_enabled": true,
+  "ore_veins_enabled": true,
+  "legacy_random_source": false,
+  "default_block": {
+    "Name": "gunge:lentarite"
+  },
+  "default_fluid": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "noise": {
+    "min_y": -256,
+    "height": 576,
+    "size_horizontal": 1,
+    "size_vertical": 2
+  },
+  "noise_router": {
+    "barrier": 0,
+    "fluid_level_floodedness": 0,
+    "fluid_level_spread": 0,
+    "lava": 0,
+    "temperature": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:temperature",
+      "xz_scale": 0.25,
+      "y_scale": 0,
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0,
+      "shift_z": "minecraft:shift_z"
+    },
+    "vegetation": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:vegetation",
+      "xz_scale": 0.25,
+      "y_scale": 0,
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0,
+      "shift_z": "minecraft:shift_z"
+    },
+    "continents": 0,
+    "erosion": 0,
+    "depth": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 0,
+      "to_y": 576,
+      "from_value": -2,
+      "to_value": 2
+    },
+    "ridges": 0,
+    "initial_density_without_jaggedness": 0,
+    "final_density": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:noise",
+        "noise": "minecraft:cave_cheese",
+        "xz_scale": 0.4,
+        "y_scale": 2
+      },
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "minecraft:y_clamped_gradient",
+            "from_y": -461,
+            "to_y": 0,
+            "from_value": -256,
+            "to_value": 320
+          },
+          "min_inclusive": 0,
+          "max_exclusive": 7,
+          "when_in_range": {
+            "type": "minecraft:flat_cache",
+            "argument": 1
+          },
+          "when_out_of_range": 0
+        },
+        "argument2": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "minecraft:y_clamped_gradient",
+            "from_y": 0,
+            "to_y": 576,
+            "from_value": 318,
+            "to_value": -256
+          },
+          "min_inclusive": 0,
+          "max_exclusive": 7,
+          "when_in_range": {
+            "type": "minecraft:flat_cache",
+            "argument": 1
+          },
+          "when_out_of_range": 0
+        }
+      }
+    },
+    "vein_toggle": 0,
+    "vein_ridged": 0,
+    "vein_gap": 0
+  },
+  "spawn_target": [],
+  "surface_rule": {
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "random_name": "bedrock_floor",
+          "true_at_and_below": {
+            "above_bottom": 0
+          },
+          "false_at_and_above": {
+            "above_bottom": 0
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:bedrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:not",
+          "invert": {
+            "type": "minecraft:vertical_gradient",
+            "random_name": "bedrock_ceiling",
+            "true_at_and_below": {
+              "below_top": 5
+            },
+            "false_at_and_above": {
+              "below_top": 0
+            }
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:bedrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:not",
+          "invert": {
+            "type": "minecraft:biome",
+            "biome_is": [
+              "gunge:toxic_wastes",
+              "gunge:glacial_fault"
+            ]
+          }
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 0,
+            "surface_type": "floor",
+            "add_surface_depth": false,
+            "secondary_depth_range": 0
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "gunge:mossy_lentarite"
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "gunge:toxic_wastes"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "gunge:chlorite"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "gunge:glacial_fault"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "gunge:lentarite"
+          }
+        }
+      }
+    ]
+  }
+}

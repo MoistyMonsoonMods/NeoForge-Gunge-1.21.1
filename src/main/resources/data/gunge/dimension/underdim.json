@@ -1,0 +1,66 @@
+{
+  "type": "gunge:underdim_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gunge:underdimnoise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "gunge:flush_cavern",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": 1,
+            "continentalness": [
+              -1,
+              1
+            ],
+            "erosion": 0.6,
+            "weirdness": -1,
+            "depth": [
+              0,
+              1.2
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "gunge:toxic_wastes",
+          "parameters": {
+            "temperature": 1.8,
+            "humidity": -1,
+            "continentalness": [
+              -0.5,
+              1
+            ],
+            "erosion": 0.6,
+            "weirdness": 1,
+            "depth": [
+              -2,
+              -0.4
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "gunge:glacial_fault",
+          "parameters": {
+            "temperature": -2,
+            "humidity": 0,
+            "continentalness": [
+              0.1,
+              2
+            ],
+            "erosion": 0.2,
+            "weirdness": 0,
+            "depth": [
+              0.4,
+              2
+            ],
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}
