@@ -17,7 +17,7 @@ public class ModCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> GUNGE_TAB =
             CREATIVE_MODE_TABS.register("gunge_tab", () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.gunge.tab"))
+                    .title(Component.translatable("itemGroup.gunge.gunge_tab"))
                     .icon(() -> new ItemStack(ModBlocks.MOSSY_LENTARITE.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.LENTARITE);
